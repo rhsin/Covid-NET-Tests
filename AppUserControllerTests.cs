@@ -2,6 +2,7 @@ using Covid.Data;
 using Covid.DTO;
 using Covid.Controllers;
 using Covid.Models;
+using Covid.Services;
 using Covid.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
@@ -32,7 +33,7 @@ namespace CovidTestProject
                 Data = appUsers
             });
 
-            var appUserController = new AppUserController();
+            var appUserController = new AppUsersMockController();
 
             var result = appUserController.ApiResponse("Test", appUsers);
 
@@ -51,7 +52,7 @@ namespace CovidTestProject
         }
     }
 
-    public class AppUserController : ControllerBase
+    public class AppUsersMockController : ControllerBase
     {
         public ActionResult<IEnumerable<AppUserDTO>> ApiResponse(string method,
             IEnumerable<AppUserDTO> appUsers)
