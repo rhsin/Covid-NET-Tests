@@ -14,39 +14,63 @@ namespace CovidTestProject
         }
 
         [Theory]
-        [InlineData("San Diego")]
-        [InlineData("nEw YoRk")]
-        [InlineData("montgomery")]
-        public void TestValidCounty(string county)
+        [InlineData("nevada", true)]
+        [InlineData("nEw YoRk", true)]
+        [InlineData("maine1", false)]
+        [InlineData("new, jersey", false)]
+        [InlineData("montgomeryalabamamontgomeryalabama", false)]
+        [InlineData("", true)]
+        public void TestValidCounty(string county, bool expected)
         {
-            Assert.True(_inputValidator.IsValidCounty(county));
+            Assert.Equal(expected, _inputValidator.IsValidCounty(county));
         }
 
         [Theory]
-        [InlineData("San Diego1")]
-        [InlineData("nEw , YoRk")]
-        [InlineData("montgomeryalabamamontgomeryalabama")]
-        public void TestInvalidCounty(string county)
+        [InlineData("nevada", true)]
+        [InlineData("nEw YoRk", true)]
+        [InlineData("maine1", false)]
+        [InlineData("new, jersey", false)]
+        [InlineData("montgomeryalabama", false)]
+        [InlineData("", true)]
+        public void TestValidState(string state, bool expected)
         {
-            Assert.False(_inputValidator.IsValidCounty(county));
+            Assert.Equal(expected, _inputValidator.IsValidState(state));
         }
 
         [Theory]
-        [InlineData("New York")]
-        [InlineData("nEw YoRk")]
-        [InlineData("alabama")]
-        public void TestValidState(string state)
+        [InlineData("date", true)]
+        [InlineData("count", false)]
+        [InlineData("", false)]
+        public void TestValidColumn(string column, bool expected)
         {
-            Assert.True(_inputValidator.IsValidState(state));
+            Assert.Equal(expected, _inputValidator.IsValidColumn(column));
         }
 
         [Theory]
-        [InlineData("New York1")]
-        [InlineData("nEw , YoRk")]
-        [InlineData("montgomeryalabama")]
-        public void TestInvalidState(string state)
+        [InlineData("desc", true)]
+        [InlineData("ascc", false)]
+        [InlineData("", true)]
+        public void TestValidOrder(string order, bool expected)
         {
-            Assert.False(_inputValidator.IsValidState(state));
+            Assert.Equal(expected, _inputValidator.IsValidOrder(order));
+        }
+
+        [Theory]
+        [InlineData(1, true)]
+        [InlineData(13, false)]
+        [InlineData(0, false)]
+        public void TestValidMonth(int month, bool expected)
+        {
+            Assert.Equal(expected, _inputValidator.IsValidMonth(month));
+        }
+
+        [Theory]
+        [InlineData(1, true)]
+        [InlineData(1200, false)]
+        [InlineData(0, false)]
+        public void TestValidLimit(int limit, bool expected)
+        {
+            Assert.Equal(expected, _inputValidator.IsValidLimit(limit));
         }
     }
 }

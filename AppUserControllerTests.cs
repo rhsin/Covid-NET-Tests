@@ -39,17 +39,6 @@ namespace CovidTestProject
 
             Assert.NotStrictEqual(apiResponse, result);
         }
-
-        [Fact]
-        public void PassingTest()
-        {
-            Assert.Equal(4, Add(2, 2));
-        }
-
-        int Add(int x, int y)
-        {
-            return x + y;
-        }
     }
 
     public class AppUsersMockController : ControllerBase
