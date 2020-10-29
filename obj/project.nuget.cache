@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "IKuDtkWekxCv3jF8Gae2uVx9zMy1qmcm/eXudbhOFcJV3X6OfCjBB2KlT+i+GWIJnjHzK4Hx0iC9x9GNU27Xjg==",
+  "dgSpecHash": "oUOvUUtY/pjOtdr72EZxrT2UnWTXgnMCcLAdT5gFhOBIJUiv/qrI8gp9J13JGsx6mg9RQ0v0O0QKK1oCCcJntg==",
   "success": true,
   "projectFilePath": "C:\\Users\\Ryan\\source\\repos\\CovidTestProject\\CovidTestProject.csproj",
   "expectedPackageFiles": [
@@ -50,6 +50,7 @@
     "C:\\Users\\Ryan\\.nuget\\packages\\microsoft.entityframeworkcore\\3.1.9\\microsoft.entityframeworkcore.3.1.9.nupkg.sha512",
     "C:\\Users\\Ryan\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\3.1.9\\microsoft.entityframeworkcore.abstractions.3.1.9.nupkg.sha512",
     "C:\\Users\\Ryan\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\3.1.9\\microsoft.entityframeworkcore.analyzers.3.1.9.nupkg.sha512",
+    "C:\\Users\\Ryan\\.nuget\\packages\\microsoft.entityframeworkcore.inmemory\\3.1.9\\microsoft.entityframeworkcore.inmemory.3.1.9.nupkg.sha512",
     "C:\\Users\\Ryan\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\3.1.9\\microsoft.entityframeworkcore.relational.3.1.9.nupkg.sha512",
     "C:\\Users\\Ryan\\.nuget\\packages\\microsoft.entityframeworkcore.sqlite\\3.1.9\\microsoft.entityframeworkcore.sqlite.3.1.9.nupkg.sha512",
     "C:\\Users\\Ryan\\.nuget\\packages\\microsoft.entityframeworkcore.sqlite.core\\3.1.9\\microsoft.entityframeworkcore.sqlite.core.3.1.9.nupkg.sha512",

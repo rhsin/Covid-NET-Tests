@@ -274,3 +274,7 @@ C:\Users\Ryan\source\repos\CovidTestProject\obj\Debug\netcoreapp3.1\CovidTestPro
 C:\Users\Ryan\source\repos\CovidTestProject\obj\Debug\netcoreapp3.1\CovidTestProject.dll
 C:\Users\Ryan\source\repos\CovidTestProject\obj\Debug\netcoreapp3.1\CovidTestProject.pdb
 C:\Users\Ryan\source\repos\CovidTestProject\obj\Debug\netcoreapp3.1\CovidTestProject.genruntimeconfig.cache
+C:\Users\Ryan\source\repos\CovidTestProject\bin\Debug\netcoreapp3.1\Castle.Core.dll
+C:\Users\Ryan\source\repos\CovidTestProject\bin\Debug\netcoreapp3.1\Moq.dll
+C:\Users\Ryan\source\repos\CovidTestProject\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.InMemory.dll
+C:\Users\Ryan\source\repos\CovidTestProject\obj\Debug\netcoreapp3.1\CovidTestProject.csproj.CoreCompileInputs.cache
