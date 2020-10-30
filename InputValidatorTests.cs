@@ -6,7 +6,7 @@ namespace CovidTestProject
 {
     public class InputValidatorTests
     {
-        private InputValidator _inputValidator; 
+        private readonly InputValidator _inputValidator; 
 
         public InputValidatorTests()
         {
