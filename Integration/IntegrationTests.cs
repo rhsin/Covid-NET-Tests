@@ -61,7 +61,6 @@ namespace CovidTestProject.Integration
             Assert.Contains("Washington", stringResponse);
         }
 
-
         [Fact]
         public async Task GetDailyCountQuery()
         {
@@ -79,13 +78,30 @@ namespace CovidTestProject.Integration
         }
 
         [Fact]
+        public async Task GetDailyCountQueryInvalid()
+        {
+            var response = await _client.GetAsync("api/DailyCounts/Query?county=1&state=ca&month=8");
+            var stringResponse = await response.Content.ReadAsStringAsync();
+
+            response.StatusCode.Should().Be(HttpStatusCode.BadRequest);
+            Assert.Equal("Invalid County Input", stringResponse);
+        }
+
+        [Fact]
+        public async Task GetAppUserUnauthorized()
+        {
+            var response = await _client.GetAsync("api/AppUsers/1");
+
+            response.StatusCode.Should().Be(HttpStatusCode.Unauthorized);
+        }
+
+        [Fact]
         public async Task AddDailyCount()
         {
             var response = await _client.PostAsync("api/CountLists/DailyCount/Add/5/1", null);
             var message = await response.Content.ReadAsStringAsync();
 
             response.StatusCode.Should().Be(HttpStatusCode.OK);
-            Assert.IsType<string>(message);
             Assert.Equal("DailyCount 1 Added To CountList 5!", message);
         }
 
@@ -96,7 +112,6 @@ namespace CovidTestProject.Integration
             var message = await response.Content.ReadAsStringAsync();
 
             response.StatusCode.Should().Be(HttpStatusCode.OK);
-            Assert.IsType<string>(message);
             Assert.Equal("DailyCount 1 Removed From CountList 5!", message);
         }
     }
