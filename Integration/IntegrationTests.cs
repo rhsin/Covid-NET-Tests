@@ -60,5 +60,44 @@ namespace CovidTestProject.Integration
             Assert.Equal(100, dailyCounts.Count);
             Assert.Contains("Washington", stringResponse);
         }
+
+
+        [Fact]
+        public async Task GetDailyCountQuery()
+        {
+            var response = await _client.GetAsync("api/DailyCounts/Query?county=los&state=ca&month=8");
+            var stringResponse = await response.Content.ReadAsStringAsync();
+            var dailyCounts = JsonConvert.DeserializeObject<ApiResponse>(stringResponse);
+
+            response.StatusCode.Should().Be(HttpStatusCode.OK);
+            Assert.IsType<ApiResponse>(dailyCounts);
+            Assert.Equal("Query By County: los, State: ca, Order: asc, Month: 8, Column: Date, Limit: 100",
+                dailyCounts.Method);
+            Assert.Equal(31, dailyCounts.Count);
+            Assert.Contains("Los Angeles", stringResponse);
+            Assert.Contains("2020-08-01", stringResponse);
+        }
+
+        [Fact]
+        public async Task AddDailyCount()
+        {
+            var response = await _client.PostAsync("api/CountLists/DailyCount/Add/5/1", null);
+            var message = await response.Content.ReadAsStringAsync();
+
+            response.StatusCode.Should().Be(HttpStatusCode.OK);
+            Assert.IsType<string>(message);
+            Assert.Equal("DailyCount 1 Added To CountList 5!", message);
+        }
+
+        [Fact]
+        public async Task RemoveDailyCount()
+        {
+            var response = await _client.PostAsync("api/CountLists/DailyCount/Remove/5/1", null);
+            var message = await response.Content.ReadAsStringAsync();
+
+            response.StatusCode.Should().Be(HttpStatusCode.OK);
+            Assert.IsType<string>(message);
+            Assert.Equal("DailyCount 1 Removed From CountList 5!", message);
+        }
     }
 }
