@@ -59,6 +59,38 @@ namespace CovidTestProject
 
             Assert.NotStrictEqual(okResponse, result);
         }
+
+        [Fact]
+        public void TestGetCountListById()
+        {
+            var countList = new CountListDTO
+            {
+                Id = 1,
+                AppUserDTO = new AppUserDTO { AccountId = 1, Name = "Ryan" }
+            };
+
+            var okResponse = new OkObjectResult(new { Method = "Find By Id", Data = countList });
+
+            _mockRepo.Setup(repo => repo.GetCountLists())
+                .ReturnsAsync(_countLists);
+
+            var result = _countListsController.GetCountList(1).Result;
+
+            Assert.NotStrictEqual(okResponse, result);
+        }
+
+        [Fact]
+        public void TestGetCountListNotFound()
+        {
+            var errorResponse = new BadRequestObjectResult("Sequence contains no matching element");
+
+            _mockRepo.Setup(repo => repo.GetCountLists())
+                .ReturnsAsync(_countLists);
+
+            var result = _countListsController.GetCountList(3).Result;
+
+            Assert.NotStrictEqual(errorResponse, result);
+        }
     }
 }
 
