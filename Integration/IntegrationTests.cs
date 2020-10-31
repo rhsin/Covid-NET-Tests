@@ -27,10 +27,11 @@ namespace CovidTestProject.Integration
             var appUsers = JsonConvert.DeserializeObject<ApiResponse>(stringResponse);
 
             response.StatusCode.Should().Be(HttpStatusCode.OK);
-            Assert.Contains("All AppUsers", stringResponse);
             Assert.IsType<ApiResponse>(appUsers);
+            Assert.Equal("All AppUsers", appUsers.Method);
+            Assert.Equal(2, appUsers.Count);
+            Assert.Contains("ryan@test.com", stringResponse);
         }
-
 
         [Fact]
         public async Task GetCountList()
@@ -40,10 +41,11 @@ namespace CovidTestProject.Integration
             var countLists = JsonConvert.DeserializeObject<ApiResponse>(stringResponse);
 
             response.StatusCode.Should().Be(HttpStatusCode.OK);
-            Assert.Contains("All CountLists", stringResponse);
             Assert.IsType<ApiResponse>(countLists);
+            Assert.Equal("All CountLists", countLists.Method);
+            Assert.Equal(5, countLists.Count);
+            Assert.Contains("countListDailyCounts", stringResponse);
         }
-
 
         [Fact]
         public async Task GetDailyCount()
@@ -53,8 +55,10 @@ namespace CovidTestProject.Integration
             var dailyCounts = JsonConvert.DeserializeObject<ApiResponse>(stringResponse);
 
             response.StatusCode.Should().Be(HttpStatusCode.OK);
-            Assert.Contains("All DailyCounts", stringResponse);
             Assert.IsType<ApiResponse>(dailyCounts);
+            Assert.Equal("All DailyCounts", dailyCounts.Method);
+            Assert.Equal(100, dailyCounts.Count);
+            Assert.Contains("Washington", stringResponse);
         }
     }
 }
