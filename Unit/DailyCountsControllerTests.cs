@@ -14,7 +14,6 @@ namespace CovidTestProject.Unit
     public class DailyCountsControllerTests
     {
         private readonly Mock<IDailyCountRepository> _mockRepo;
-        private readonly IApiResponse _apiResponse;
         private readonly IInputValidator _inputValidator;
         private readonly DailyCountsController _dailyCountsController;
         private List<DailyCount> _dailyCounts;
@@ -22,9 +21,8 @@ namespace CovidTestProject.Unit
         public DailyCountsControllerTests()
         {
             _mockRepo = new Mock<IDailyCountRepository>();
-            _apiResponse = new ApiResponse();
             _inputValidator = new InputValidator();
-            _dailyCountsController = new DailyCountsController(_mockRepo.Object, _apiResponse, _inputValidator);
+            _dailyCountsController = new DailyCountsController(_mockRepo.Object, _inputValidator);
 
             _dailyCounts = new List<DailyCount>
             {
@@ -54,7 +52,7 @@ namespace CovidTestProject.Unit
         [Fact]
         public void TestGetDailyCount()
         {
-            var apiResponse = _apiResponse.Json("All DailyCounts", _dailyCounts);
+            var apiResponse = new ApiResponse("All DailyCounts", _dailyCounts);
 
             var okResponse = new OkObjectResult(apiResponse);
 
@@ -69,7 +67,7 @@ namespace CovidTestProject.Unit
         [Fact]
         public void TestDailyCountDateRange()
         {
-            var apiResponse = _apiResponse.Json("Dates In Month 9", _dailyCounts);
+            var apiResponse = new ApiResponse("Dates In Month 9", _dailyCounts);
 
             var okResponse = new OkObjectResult(apiResponse);
 

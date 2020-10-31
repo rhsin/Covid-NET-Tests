@@ -48,7 +48,7 @@ namespace CovidTestProject.Unit
         [Fact]
         public void TestGetCountList()
         {
-            var apiResponse = new ApiResponse().Json("All CountLists", _countLists);
+            var apiResponse = new ApiResponse("All CountLists", _countLists);
 
             var okResponse = new OkObjectResult(apiResponse);
 

@@ -40,7 +40,7 @@ namespace CovidTestProject.Unit
         [Fact]
         public void TestGetAppUser()
         {
-            var apiResponse = new ApiResponse().Json("All AppUsers", _appUsers);
+            var apiResponse = new ApiResponse("All AppUsers", _appUsers);
 
             var okResponse = new OkObjectResult(apiResponse);
 

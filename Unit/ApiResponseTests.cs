@@ -20,9 +20,7 @@ namespace CovidTestProject.Unit
                 Data = data
             };
 
-            var apiResponse = new ApiResponse();
-
-            var result = apiResponse.Json("Test", data);
+            var result = new ApiResponse("Test", data);
 
             result.Should().BeEquivalentTo(response);
         }
