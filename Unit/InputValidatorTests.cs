@@ -2,7 +2,7 @@ using Covid.Services;
 using System;
 using Xunit;
 
-namespace CovidTestProject
+namespace CovidTestProject.Unit
 {
     public class InputValidatorTests
     {

@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using Xunit;
 
-namespace CovidTestProject
+namespace CovidTestProject.Unit
 {
     public class CsvImporterTests
     {

@@ -9,7 +9,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace CovidTestProject
+namespace CovidTestProject.Unit
 {
     public class CountListsControllerTests
     {

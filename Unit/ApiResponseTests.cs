@@ -1,9 +1,10 @@
 using Covid.Services;
+using FluentAssertions;
 using System;
 using System.Collections.Generic;
 using Xunit;
 
-namespace CovidTestProject
+namespace CovidTestProject.Unit
 {
     public class ApiResponseTests
     {
@@ -23,7 +24,7 @@ namespace CovidTestProject
 
             var result = apiResponse.Json("Test", data);
 
-            Assert.NotStrictEqual(response, result);
+            result.Should().BeEquivalentTo(response);
         }
     }
 }
