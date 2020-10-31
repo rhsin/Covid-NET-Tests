@@ -80,7 +80,7 @@ namespace CovidTestProject
         }
 
         [Fact]
-        public void TestGetCountListNotFound()
+        public void TestGetCountListBadRequest()
         {
             var errorResponse = new BadRequestObjectResult("Sequence contains no matching element");
 
