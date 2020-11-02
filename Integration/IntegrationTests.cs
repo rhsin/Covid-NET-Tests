@@ -78,7 +78,19 @@ namespace CovidTestProject.Integration
         }
 
         [Fact]
-        public async Task GetDailyCountQueryInvalid()
+        public async Task GetQueryCasesData()
+        {
+            var response = await _client.GetAsync("api/Query/Data/Cases/8?county=los&state=ca");
+            var stringResponse = await response.Content.ReadAsStringAsync();
+
+            response.StatusCode.Should().Be(HttpStatusCode.OK);
+            Assert.Contains("Query Cases Data By Month", stringResponse);
+            Assert.Contains("Los Angeles", stringResponse);
+            Assert.Contains("2020-08-01", stringResponse);
+        }
+
+        [Fact]
+        public async Task GetDailyCountQueryBadRequest()
         {
             var response = await _client.GetAsync("api/DailyCounts/Query?county=1&state=ca&month=8");
             var stringResponse = await response.Content.ReadAsStringAsync();
